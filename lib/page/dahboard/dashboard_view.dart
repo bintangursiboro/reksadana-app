@@ -4,6 +4,9 @@ import 'package:hoopiper_reksa/page/dahboard/dashboard_top_reksa/dashboard_top_r
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class DashboardView extends StatelessWidget {
+  final Function onTapCheckout;
+  DashboardView({this.onTapCheckout});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +29,9 @@ class DashboardView extends StatelessWidget {
                       ),
                       Positioned(
                         child: GestureDetector(
+                          onTap: () {
+                            onTapCheckout();
+                          },
                           child: Icon(
                             Icons.shopping_cart,
                             size: 30,

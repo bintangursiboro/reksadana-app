@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hoopiper_reksa/page/checkout/checkout.dart';
 import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_bloc.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard.dart';
 
@@ -12,6 +13,7 @@ class App extends StatelessWidget {
         title: 'Hoopiper Reksadana',
         routes: {
           Dashboard.PATH: (_) => Dashboard(),
+          Checkout.PATH: (_) => Checkout(),
         },
         home: Dashboard(),
         theme: ThemeData(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/page/checkout/checkout.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_view.dart';
 
 class Dashboard extends StatefulWidget {
@@ -17,6 +18,12 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return DashboardView();
+    return DashboardView(
+      onTapCheckout: onTapCheckout,
+    );
+  }
+
+  onTapCheckout() {
+    Navigator.pushNamed(context, Checkout.PATH);
   }
 }
