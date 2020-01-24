@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_tab_reksa/dashboard_tab_reksa.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_top_reksa/dashboard_top_reksa.dart';
+import 'package:hoopiper_reksa/util/style/style.dart';
 
 class DashboardView extends StatelessWidget {
   @override
@@ -15,8 +16,40 @@ class DashboardView extends StatelessWidget {
             color: Theme.of(context).primaryColor,
             child: Column(
               children: <Widget>[
-                CircleAvatar(
-                  radius: 50,
+                Container(
+                  width: double.infinity,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        radius: 50,
+                      ),
+                      Positioned(
+                        child: GestureDetector(
+                          child: Icon(
+                            Icons.shopping_cart,
+                            size: 30,
+                            color: primaryTextColor,
+                          ),
+                        ),
+                        top: 10,
+                        right: 10,
+                      ),
+                      Positioned(
+                        child: Container(
+                          height: 10,
+                          width: 10,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.red,
+                          ),
+                        ),
+                        // height: 10,
+                        top: 10,
+                        right: 10,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 7,
@@ -55,11 +88,7 @@ class DashboardView extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Top Reksa',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white70,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: primaryColorBold(fontSize: 20),
                   ),
                 ),
                 SizedBox(

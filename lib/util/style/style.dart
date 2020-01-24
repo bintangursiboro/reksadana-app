@@ -14,3 +14,5 @@ TextStyle primaryColor({double fontSize}) {
     color: Color(0xFFbbe1fa),
   );
 }
+
+Color primaryTextColor = Color(0xFFbbe1fa);
