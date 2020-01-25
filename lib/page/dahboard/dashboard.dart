@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hoopiper_reksa/page/checkout/checkout.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_view.dart';
+import 'package:hoopiper_reksa/page/detail_beli/detail.dart';
 
 class Dashboard extends StatefulWidget {
   static const PATH = '/dashboard';
@@ -8,11 +9,10 @@ class Dashboard extends StatefulWidget {
   _DashboardState createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
+class _DashboardState extends State<Dashboard> {
   TabController tabController;
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -20,7 +20,12 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return DashboardView(
       onTapCheckout: onTapCheckout,
+      onTapReksa: onTapReksa,
     );
+  }
+
+  onTapReksa() {
+    Navigator.pushNamed(context, Detail.PATH);
   }
 
   onTapCheckout() {

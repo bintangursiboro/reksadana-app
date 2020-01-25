@@ -16,3 +16,29 @@ TextStyle primaryColor({double fontSize}) {
 }
 
 Color primaryTextColor = Color(0xFFbbe1fa);
+
+Color colorPrimaryContainer = Color(0xFF0f4c75);
+
+Color colorSecondaryContainer = Color(0xFF3282b8);
+
+BoxDecoration primaryBoxDecoration = BoxDecoration(
+  color: Color(0xFFbbe1fa),
+  borderRadius: BorderRadius.circular(5),
+);
+
+Color textColorBlack = Color(0xFF1b262c);
+
+TextStyle textStyleBlack({double fontSize}) {
+  return TextStyle(
+    fontSize: fontSize,
+    color: Color(0xFF1b262c),
+  );
+}
+
+TextStyle textStyleBlackBold({double fontSize}) {
+  return TextStyle(
+    fontSize: fontSize,
+    fontWeight: FontWeight.bold,
+    color: Color(0xFF1b262c),
+  );
+}
