@@ -93,7 +93,7 @@ class DashboardTabReksaView extends StatelessWidget {
         ),
         Container(
           color: Colors.black87,
-          height: MediaQuery.of(context).size.height - 40 - 375,
+          height: MediaQuery.of(context).size.height - 40 - 385,
           width: double.infinity,
           child: ListView.builder(
             itemBuilder: (BuildContext context, int index) {
