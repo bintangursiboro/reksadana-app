@@ -3,6 +3,7 @@ import 'package:hoopiper_reksa/page/detail_beli/detail_profile/detail_beli.dart'
 import 'package:hoopiper_reksa/page/detail_beli/detail_profile/reksa_dana_profile.dart';
 import 'package:hoopiper_reksa/page/detail_beli/detail_profile/riwayat_keuntungan.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
+import 'package:hoopiper_reksa/util/validator/text_form_field_validator.dart';
 
 class Detail extends StatefulWidget {
   static const PATH = '/detail';
@@ -45,7 +46,8 @@ class _DetailState extends State<Detail> {
                   child: TextFormField(
                     // inputFormatters: ,
                     style: primaryColor(),
-                    validator: (val) {},
+                    keyboardType: TextInputType.number,
+                    validator: Validator.validateNumber,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 5,
