@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/page/dahboard/dashboard.dart';
+import 'package:hoopiper_reksa/page/register/register.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class LoginView extends StatelessWidget {
@@ -64,7 +66,9 @@ class LoginView extends StatelessWidget {
                       fillColor: Theme.of(context).primaryColor,
                       shape: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, Dashboard.PATH);
+                      },
                       child: Text(
                         'Login',
                         style: primaryColorBold(fontSize: 15),
@@ -78,7 +82,9 @@ class LoginView extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     child: RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, Register.PATH);
+                      },
                       child: Text(
                         'Register',
                         style: textStyleBlackBold(fontSize: 15),

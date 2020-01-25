@@ -17,9 +17,14 @@ class _CheckoutState extends State<Checkout> {
           style: primaryColorBold(),
         ),
         // bottom: ,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: primaryTextColor,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: primaryTextColor,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         centerTitle: true,
       ),

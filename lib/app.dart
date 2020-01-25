@@ -6,6 +6,7 @@ import 'package:hoopiper_reksa/page/dahboard/dashboard.dart';
 import 'package:hoopiper_reksa/page/detail_beli/detail.dart';
 import 'package:hoopiper_reksa/page/login/login.dart';
 import 'package:hoopiper_reksa/page/register/register.dart';
+import 'package:hoopiper_reksa/page/reksa_dana_ku/reksa_dana_ku.dart';
 
 class App extends StatelessWidget {
   @override
@@ -20,9 +21,10 @@ class App extends StatelessWidget {
           Detail.PATH: (_) => Detail(),
           Login.PATH: (_) => Login(),
           Register.PATH: (_) => Register(),
+          ReksaDanaKu.PATH: (_) => ReksaDanaKu(),
         },
         // home: Dashboard(),
-        initialRoute: Register.PATH,
+        initialRoute: Login.PATH,
         theme: ThemeData(
           primaryColor: Color(0xFF1b262c),
           accentColor: Color(0xFF0f4c75),

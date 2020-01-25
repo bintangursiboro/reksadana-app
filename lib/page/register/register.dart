@@ -10,6 +10,10 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: RegisterView());
+    return Scaffold(body: RegisterView(onTapExit: onTapExit));
+  }
+
+  onTapExit() {
+    Navigator.pop(context);
   }
 }
