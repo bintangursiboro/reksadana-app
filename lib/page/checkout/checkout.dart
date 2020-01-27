@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/page/checkout/checkout_view.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class Checkout extends StatefulWidget {
@@ -27,8 +28,18 @@ class _CheckoutState extends State<Checkout> {
           },
         ),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              onDeleteReksa();
+            },
+          ),
+        ],
       ),
-      body: Container(),
+      body: CheckoutView(),
     );
   }
+
+  onDeleteReksa() {}
 }

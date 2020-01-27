@@ -42,3 +42,18 @@ TextStyle textStyleBlackBold({double fontSize}) {
     color: Color(0xFF1b262c),
   );
 }
+
+Widget loadingDataWidget = Container(
+  alignment: Alignment.center,
+  child: Column(
+    children: <Widget>[
+      CircularProgressIndicator(),
+      Text('Memuat Data..'),
+    ],
+  ),
+);
+
+Widget errorWidget = Container(
+  alignment: Alignment.center,
+  child: Text('Maaf terjadi kesalahan'),
+);

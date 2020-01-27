@@ -6,9 +6,11 @@ import 'package:hoopiper_reksa/util/style/style.dart';
 
 class DashboardView extends StatelessWidget {
   final Function onTapCheckout;
+  final Function onTapLogout;
   DashboardView({
     this.onTapCheckout,
     this.onTapReksa,
+    this.onTapLogout,
   });
   final Function onTapReksa;
 
@@ -21,7 +23,7 @@ class DashboardView extends StatelessWidget {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 6),
-                height: 370,
+                height: 380,
                 width: double.infinity,
                 color: Theme.of(context).primaryColor,
                 child: Column(
@@ -98,8 +100,15 @@ class DashboardView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
+                    RawMaterialButton(
+                      onPressed: () {
+                        onTapLogout();
+                      },
+                      child: Text('Logout', style: textStyleBlackBold()),
+                      fillColor: primaryTextColor,
+                      shape: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: 10),

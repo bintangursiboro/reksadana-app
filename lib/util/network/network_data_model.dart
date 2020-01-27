@@ -1,5 +1,5 @@
 class NetworkDataModel {
-  Map<String, dynamic> response;
+  dynamic response;
   String error;
   int code;
 

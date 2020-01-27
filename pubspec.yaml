@@ -27,6 +27,7 @@ dependencies:
   kiwi: ^0.2.0
   sqflite: ^1.2.0
   shared_preferences: ^0.5.6+1
+  path_provider: ^1.5.1
 
 
   # The following adds the Cupertino Icons font to your application.
