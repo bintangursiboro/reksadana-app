@@ -12,6 +12,7 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
+  final jumlahBeliKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,24 +44,27 @@ class _DetailState extends State<Detail> {
                 DetailBeli(),
                 //Text Jumlah beli
                 Theme(
-                  child: TextFormField(
-                    // inputFormatters: ,
-                    style: primaryColor(),
-                    keyboardType: TextInputType.number,
-                    validator: Validator.validateNumber,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 10,
+                  child: Form(
+                    key: jumlahBeliKey,
+                    child: TextFormField(
+                      // inputFormatters: ,
+                      style: primaryColor(),
+                      keyboardType: TextInputType.number,
+                      validator: Validator.validateNumber,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 5,
+                          horizontal: 10,
+                        ),
+                        hintText: 'Jumlah Beli',
+                        icon: Icon(
+                          Icons.attach_money,
+                          color: primaryTextColor,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: primaryTextColor),
+                            borderRadius: BorderRadius.circular(5)),
                       ),
-                      hintText: 'Jumlah Beli',
-                      icon: Icon(
-                        Icons.attach_money,
-                        color: primaryTextColor,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: primaryTextColor),
-                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                   data: ThemeData(
@@ -85,7 +89,12 @@ class _DetailState extends State<Detail> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (jumlahBeliKey.currentState.validate()) {
+                        //TODO Fungsi beli reksa
+                        print('BELIKK!');
+                      }
+                    },
                   ),
                 ),
               ],

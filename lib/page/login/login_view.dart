@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:hoopiper_reksa/page/dahboard/dashboard.dart';
 import 'package:hoopiper_reksa/page/register/register.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class LoginView extends StatelessWidget {
+  final GlobalKey<FormState> formKeyLogin;
+  final TextEditingController usernameController;
+  final TextEditingController passwordController;
+  final Function(String, String) onTapLogin;
+
+  LoginView({
+    this.formKeyLogin,
+    this.passwordController,
+    this.usernameController,
+    this.onTapLogin,
+  });
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -31,70 +41,92 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               alignment: Alignment.center,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'Login',
-                    style: textStyleBlackBold(fontSize: 25),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.account_circle),
-                      border: OutlineInputBorder(),
-                      hintText: 'Username',
-                      labelText: 'Masukkan Username',
+              child: Form(
+                key: formKeyLogin,
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      'Login',
+                      style: textStyleBlackBold(fontSize: 25),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Masukkan Password',
-                      hintText: 'Password',
-                      prefixIcon: Icon(Icons.vpn_key),
-                      border: OutlineInputBorder(),
+                    SizedBox(
+                      height: 15,
                     ),
-                    obscureText: true,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: RawMaterialButton(
-                      fillColor: Theme.of(context).primaryColor,
-                      shape: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      onPressed: () {
-                        Navigator.pushNamed(context, Dashboard.PATH);
+                    TextFormField(
+                      controller: usernameController,
+                      validator: (val) {
+                        if (val.length == 0) {
+                          return 'Tidak boleh kosong';
+                        } else if (val.length < 6) {
+                          return 'Username minimal 6 karakter';
+                        } else
+                          return null;
                       },
-                      child: Text(
-                        'Login',
-                        style: primaryColorBold(fontSize: 15),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.account_circle),
+                        border: OutlineInputBorder(),
+                        hintText: 'Username',
+                        labelText: 'Masukkan Username',
                       ),
                     ),
-                  ),
-                  Text('Forgot Password?'),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: RawMaterialButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, Register.PATH);
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      validator: (val) {
+                        if (val.length == 0) {
+                          return 'Tidak boleh kosong';
+                        } else if (val.length < 6) {
+                          return 'Password minimal 6 karakter';
+                        } else
+                          return null;
                       },
-                      child: Text(
-                        'Register',
-                        style: textStyleBlackBold(fontSize: 15),
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        labelText: 'Masukkan Password',
+                        hintText: 'Password',
+                        prefixIcon: Icon(Icons.vpn_key),
+                        border: OutlineInputBorder(),
                       ),
-                      shape: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                      obscureText: true,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: RawMaterialButton(
+                        fillColor: Theme.of(context).primaryColor,
+                        shape: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {
+                          onTapLogin(
+                              usernameController.text, passwordController.text);
+                        },
+                        child: Text(
+                          'Login',
+                          style: primaryColorBold(fontSize: 15),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Text('Forgot Password?'),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: RawMaterialButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, Register.PATH);
+                        },
+                        child: Text(
+                          'Register',
+                          style: textStyleBlackBold(fontSize: 15),
+                        ),
+                        shape: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

@@ -24,7 +24,7 @@ class App extends StatelessWidget {
           ReksaDanaKu.PATH: (_) => ReksaDanaKu(),
         },
         // home: Dashboard(),
-        initialRoute: Login.PATH,
+        initialRoute: Dashboard.PATH,
         theme: ThemeData(
           primaryColor: Color(0xFF1b262c),
           accentColor: Color(0xFF0f4c75),
@@ -33,7 +33,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<DashboardBloc>(
           create: (context) => DashboardBloc(),
-          child: Dashboard(),
+          // child: Dashboard(),
         )
       ],
     );
