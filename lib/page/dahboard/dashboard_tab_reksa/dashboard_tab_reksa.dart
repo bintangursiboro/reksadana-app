@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_tab_reksa/dashboard_tab_reksa_view.dart';
+import 'package:hoopiper_reksa/page/detail_beli/detail.dart';
 
 class DashboardTabReksa extends StatefulWidget {
   @override
@@ -17,9 +18,13 @@ class _DashboardTabReksaState extends State<DashboardTabReksa> {
   @override
   Widget build(BuildContext context) {
     return DashboardTabReksaView(
-      tabIndex: tabIndex,
-      onChangeTab: onChangeTabIndex,
-    );
+        tabIndex: tabIndex,
+        onChangeTab: onChangeTabIndex,
+        onTapItem: onTapItem);
+  }
+
+  onTapItem() {
+    Navigator.pushNamed(context, Detail.PATH);
   }
 
   onChangeTabIndex(int index) {

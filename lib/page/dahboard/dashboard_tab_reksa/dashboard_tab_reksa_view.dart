@@ -3,9 +3,15 @@ import 'package:hoopiper_reksa/util/style/style.dart';
 
 class DashboardTabReksaView extends StatelessWidget {
   final TabController tabController;
-  DashboardTabReksaView({this.tabController, this.tabIndex, this.onChangeTab});
+  DashboardTabReksaView({
+    this.tabController,
+    this.tabIndex,
+    this.onChangeTab,
+    this.onTapItem,
+  });
   final int tabIndex;
   final Function(int) onChangeTab;
+  final Function onTapItem;
 
   @override
   Widget build(BuildContext context) {
@@ -97,33 +103,40 @@ class DashboardTabReksaView extends StatelessWidget {
           width: double.infinity,
           child: ListView.builder(
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                decoration: BoxDecoration(
-                    color: Color(0xFF1b262c),
-                    borderRadius: BorderRadius.circular(5.0)),
-                margin:
-                    EdgeInsetsDirectional.only(bottom: 15, start: 5, end: 5),
-                child: ListTile(
-                  leading: Container(
-                      child: Icon(
-                    Icons.trending_up,
-                    color: Color(0xFF66ff00),
-                  )),
-                  title: Text(
-                    'Capital Money Market Fund',
-                    style: TextStyle(
-                        color: Color(0xFFbbe1fa), fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    '7.44%',
-                    style: TextStyle(
-                      color: Color(0xFFbbe1fa),
+              return GestureDetector(
+                onTap: () {
+                  onTapItem();
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xFF1b262c),
+                      borderRadius: BorderRadius.circular(5.0)),
+                  margin:
+                      EdgeInsetsDirectional.only(bottom: 15, start: 5, end: 5),
+                  child: ListTile(
+                    leading: Container(
+                        child: Icon(
+                      Icons.trending_up,
+                      color: Color(0xFF66ff00),
+                    )),
+                    title: Text(
+                      'Capital Money Market Fund',
+                      style: TextStyle(
+                          color: Color(0xFFbbe1fa),
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  trailing: Text(
-                    'Nab IDR 1,310.07',
-                    style: TextStyle(
-                        color: Color(0xFFbbe1fa), fontWeight: FontWeight.bold),
+                    subtitle: Text(
+                      '7.44%',
+                      style: TextStyle(
+                        color: Color(0xFFbbe1fa),
+                      ),
+                    ),
+                    trailing: Text(
+                      'Nab IDR 1,310.07',
+                      style: TextStyle(
+                          color: Color(0xFFbbe1fa),
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               );
