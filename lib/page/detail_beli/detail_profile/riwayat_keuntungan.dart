@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class RiwayatKeuntungan extends StatelessWidget {
+  final ReksaDana reksaDana;
+  final bool isLoading;
+  final bool isError;
+
+  RiwayatKeuntungan({
+    this.reksaDana,
+    this.isError,
+    this.isLoading,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 90,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -27,10 +38,12 @@ class RiwayatKeuntungan extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Text(
-                  '3.59 %/Thn',
-                  style: textStyleBlackBold(fontSize: 15),
-                ),
+                (isLoading)
+                    ? loadingDataWidget
+                    : Text(
+                        reksaDana.riwayatKeuntungan.blnEnam ?? '',
+                        style: textStyleBlackBold(fontSize: 15),
+                      ),
               ],
             ),
           ),
@@ -46,16 +59,18 @@ class RiwayatKeuntungan extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  '6 Bln',
+                  '1 Thn',
                   style: textStyleBlackBold(fontSize: 13),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                Text(
-                  '3.59 %/Thn',
-                  style: textStyleBlackBold(fontSize: 15),
-                ),
+                (isLoading)
+                    ? loadingDataWidget
+                    : Text(
+                        reksaDana.riwayatKeuntungan.tahunSatu ?? '',
+                        style: textStyleBlackBold(fontSize: 15),
+                      ),
               ],
             ),
           ),
@@ -71,16 +86,18 @@ class RiwayatKeuntungan extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  '6 Bln',
+                  '2 Thn',
                   style: textStyleBlackBold(fontSize: 13),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                Text(
-                  '3.59 %/Thn',
-                  style: textStyleBlackBold(fontSize: 15),
-                ),
+                (isLoading)
+                    ? loadingDataWidget
+                    : Text(
+                        reksaDana.riwayatKeuntungan.tahunDua ?? '',
+                        style: textStyleBlackBold(fontSize: 15),
+                      ),
               ],
             ),
           ),
@@ -96,14 +113,14 @@ class RiwayatKeuntungan extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  '6 Bln',
+                  '3 Thn',
                   style: textStyleBlackBold(fontSize: 13),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 Text(
-                  '3.59 %/Thn',
+                  reksaDana.riwayatKeuntungan.tahunTiga ?? '',
                   style: textStyleBlackBold(fontSize: 15),
                 ),
               ],

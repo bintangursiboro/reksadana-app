@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class DetailBeli extends StatelessWidget {
+  final ReksaDana reksaDana;
+  final bool isLoading;
+  final bool isError;
+
+  DetailBeli({
+    this.reksaDana,
+    this.isLoading,
+    this.isError,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -78,42 +89,42 @@ class DetailBeli extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'Pasar Uang',
+                  reksaDana.jenis ?? '',
                   style: primaryColor(),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'IDR 100,000.00',
+                  reksaDana.minPembelian ?? '',
                   style: primaryColor(),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'IDR 100,000.00',
+                  reksaDana.nextPembelian ?? '',
                   style: primaryColor(),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'IDR 100,000.00',
+                  reksaDana.minPembelian ?? '',
                   style: primaryColor(),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '11 September 2006',
+                  reksaDana.tglPeluncuran ?? '',
                   style: primaryColor(),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'IDR 406,052,709,096.00',
+                  reksaDana.danaKelola ?? '',
                   style: primaryColor(),
                 ),
                 SizedBox(

@@ -42,13 +42,30 @@ class ReksaPasarUang {
   }
 }
 
-class ReksaDana {
-  int id;
-  String titleReksa;
+class RiwayatKeuntunganModel {
   String blnEnam;
   String tahunSatu;
   String tahunDua;
   String tahunTiga;
+
+  RiwayatKeuntunganModel.fromJson(Map<String, dynamic> response) {
+    this.blnEnam = response['bln_enam'] ?? '';
+    this.tahunSatu = response['tahun_satu'] ?? '';
+    this.tahunDua = response['tahun_dua'] ?? '';
+    this.tahunTiga = response['tahun_tiga'] ?? '';
+  }
+
+  RiwayatKeuntunganModel.initial() {
+    this.blnEnam = '';
+    this.tahunSatu = '';
+    this.tahunDua = '';
+    this.tahunTiga = '';
+  }
+}
+
+class ReksaDana {
+  int id;
+  String titleReksa;
   String jenis;
   String minPembelian;
   String nextPembelian;
@@ -56,20 +73,32 @@ class ReksaDana {
   String danaKelola;
   String hargaUnit;
   bool isGrowth;
+  RiwayatKeuntunganModel riwayatKeuntungan;
 
   ReksaDana.fromJson(Map<String, dynamic> response) {
     this.id = response['id'] ?? 0;
     this.titleReksa = response['title_reksa'] ?? '';
-    this.blnEnam = response['bln_enam'] ?? '';
-    this.tahunSatu = response['tahun_satu'] ?? '';
-    this.tahunDua = response['tahun_dua'] ?? '';
-    this.tahunTiga = response['tahun_tiga'] ?? '';
     this.jenis = response['jenis'] ?? '';
     this.minPembelian = response['min_pembelian'] ?? '';
     this.nextPembelian = response['next_pembelian'] ?? '';
     this.danaKelola = response['dana_kelola'] ?? '';
     this.hargaUnit = response['harga_unit'] ?? '';
-    this.isGrowth = response['isGrowth'] ?? '';
+    this.isGrowth = response['isGrowth'] ?? false;
+    this.riwayatKeuntungan =
+        RiwayatKeuntunganModel.fromJson(response['riwayat_keuntungan']) ??
+            RiwayatKeuntunganModel.initial();
+  }
+
+  ReksaDana.initial() {
+    this.id = 0;
+    this.titleReksa = '';
+    this.jenis = '';
+    this.minPembelian = '';
+    this.nextPembelian = '';
+    this.danaKelola = '';
+    this.hargaUnit = '';
+    this.isGrowth = false;
+    this.riwayatKeuntungan = RiwayatKeuntunganModel.initial();
   }
 
   static List<ReksaDana> parseList(List<dynamic> response) {

@@ -53,7 +53,10 @@ class _DashboardState extends State<Dashboard> {
   }
 
   onTapReksa() {
-    Navigator.pushNamed(context, Detail.PATH);
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => Detail(
+              idReksa: 1,
+            )));
   }
 
   onTapCheckout() {

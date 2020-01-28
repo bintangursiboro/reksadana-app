@@ -139,7 +139,7 @@ class DashboardTabReksaView extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text(
-                                listItem[index].tahunSatu,
+                                listItem[index].riwayatKeuntungan.tahunSatu,
                                 style: TextStyle(
                                   color: Color(0xFFbbe1fa),
                                 ),

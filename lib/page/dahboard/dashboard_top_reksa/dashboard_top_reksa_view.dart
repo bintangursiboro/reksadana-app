@@ -62,7 +62,7 @@ class DashboardTopReksaView extends StatelessWidget {
                                       fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  topReksa[index].tahunSatu,
+                                  topReksa[index].riwayatKeuntungan.tahunSatu,
                                   style: TextStyle(
                                       color: Color(0xFFbbe1fa),
                                       fontSize: 13,

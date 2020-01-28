@@ -15,8 +15,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   Stream<DashboardState> mapEventToState(DashboardEvent event) async* {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
-    yield DashboardLoading();
     if (event is GetProfile) {
+      yield DashboardLoading();
       try {
         yield await _service.getProfile().then((response) {
           return DashboardProfileLoaded(profile: response);
@@ -26,10 +26,9 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
     if (event is CheckLogin) {
       try {
-        if (preferences.getBool(SharedPreferencesHelper.isLogin)) {
+        if (!preferences.getBool(SharedPreferencesHelper.isLogin)) {
           yield HasLogout();
-        } else
-          yield DashboardInitial();
+        }
       } catch (_) {}
     }
 
