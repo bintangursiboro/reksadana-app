@@ -10,6 +10,7 @@ class DatabaseHelper {
 
   static final tableCheckout = 'checkout_reksadana';
   static final tableMyReksadana = 'my_reksadana';
+  static final tableUser = 'user';
 
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -38,8 +39,26 @@ class DatabaseHelper {
       columnId INTEGER PRIMARY KEY AUTOINCREMENT,
       titleReksa TEXT,
       jenis TEXT,
-      hargaUnit TEXT,
+      hargaUnit TEXT
     )
+      ''');
+
+    await db.execute('''CREATE TABLE $tableMyReksadana (
+      columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+      titleReksa TEXT,
+      jenis TEXT,
+      hargaUnit TEXT
+    )
+      ''');
+
+    await db.execute('''CREATE TABLE user (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        namaDepan TEXT,
+        namaBelakang TEXT,
+        email TEXT,
+        username TEXT,
+        password TEXT
+      )
       ''');
   }
 }

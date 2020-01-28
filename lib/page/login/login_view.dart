@@ -7,12 +7,16 @@ class LoginView extends StatelessWidget {
   final TextEditingController usernameController;
   final TextEditingController passwordController;
   final Function(String, String) onTapLogin;
+  final bool isLoading;
+  final bool isError;
 
   LoginView({
     this.formKeyLogin,
     this.passwordController,
     this.usernameController,
     this.onTapLogin,
+    this.isError,
+    this.isLoading,
   });
   @override
   Widget build(BuildContext context) {
@@ -90,21 +94,32 @@ class LoginView extends StatelessWidget {
                       ),
                       obscureText: true,
                     ),
-                    Container(
-                      width: double.infinity,
-                      child: RawMaterialButton(
-                        fillColor: Theme.of(context).primaryColor,
-                        shape: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        onPressed: () {
-                          onTapLogin(
-                              usernameController.text, passwordController.text);
-                        },
-                        child: Text(
-                          'Login',
-                          style: primaryColorBold(fontSize: 15),
-                        ),
-                      ),
+                    (isLoading)
+                        ? loadingDataWidget
+                        : Container(
+                            width: double.infinity,
+                            child: RawMaterialButton(
+                              fillColor: Theme.of(context).primaryColor,
+                              shape: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5)),
+                              onPressed: () {
+                                onTapLogin(usernameController.text,
+                                    passwordController.text);
+                              },
+                              child: Text(
+                                'Login',
+                                style: primaryColorBold(fontSize: 15),
+                              ),
+                            ),
+                          ),
+                    (isError)
+                        ? Text(
+                            'Username atau Password salah',
+                            style: TextStyle(color: Colors.red),
+                          )
+                        : Container(),
+                    SizedBox(
+                      height: 20,
                     ),
                     Text('Forgot Password?'),
                     SizedBox(
