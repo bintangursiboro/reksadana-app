@@ -37,4 +37,10 @@ class DashboardService {
       return ReksaPasarUang.fromJson(response.response);
     });
   }
+
+  Future<Profile> getProfile() async {
+    return await _networkInterface.requestGet(path: 'profile').then((response) {
+      return Profile.fromJson(response.response);
+    });
+  }
 }

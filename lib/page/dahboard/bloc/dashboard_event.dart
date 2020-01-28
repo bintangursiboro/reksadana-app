@@ -7,3 +7,5 @@ abstract class DashboardEvent extends Equatable {
   @override
   List<Object> get props => this.mProps;
 }
+
+class GetProfile extends DashboardEvent {}

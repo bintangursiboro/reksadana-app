@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_tab_reksa/dashboard_tab_reksa.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_top_reksa/dashboard_top_reksa.dart';
 import 'package:hoopiper_reksa/page/reksa_dana_ku/reksa_dana_ku.dart';
@@ -7,10 +8,13 @@ import 'package:hoopiper_reksa/util/style/style.dart';
 class DashboardView extends StatelessWidget {
   final Function onTapCheckout;
   final Function onTapLogout;
+  final Profile profile;
+
   DashboardView({
     this.onTapCheckout,
     this.onTapReksa,
     this.onTapLogout,
+    this.profile,
   });
   final Function onTapReksa;
 
@@ -74,9 +78,8 @@ class DashboardView extends StatelessWidget {
                     SizedBox(
                       height: 7,
                     ),
-                    //TODO Change User Name
                     Text(
-                      'Lohot Siboro',
+                      profile.name ?? 'Terjadi Kesalahan',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white70,
@@ -93,7 +96,7 @@ class DashboardView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
-                        'Rp. 100.000.000',
+                        profile.totalDana ?? 'RP. 0',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF004f1c),

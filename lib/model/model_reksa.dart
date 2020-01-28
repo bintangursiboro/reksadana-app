@@ -83,3 +83,23 @@ class ReksaDana {
     return list;
   }
 }
+
+class Profile {
+  String name;
+  String totalDana;
+
+  Profile.fromJson(Map<String, dynamic> response) {
+    this.name = response['name'] ?? '';
+    this.totalDana = response['total_dana'] ?? '';
+  }
+
+  Profile.error() {
+    this.name = 'Terjadi Kesalahan';
+    this.totalDana = 'Rp. 0';
+  }
+
+  Profile.loading() {
+    this.name = 'Loading..';
+    this.totalDana = 'Loading..';
+  }
+}

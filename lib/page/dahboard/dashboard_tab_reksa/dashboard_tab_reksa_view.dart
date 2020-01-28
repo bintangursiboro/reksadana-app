@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class DashboardTabReksaView extends StatelessWidget {
@@ -8,10 +9,17 @@ class DashboardTabReksaView extends StatelessWidget {
     this.tabIndex,
     this.onChangeTab,
     this.onTapItem,
+    this.listItem,
+    this.isLoading,
+    this.isError,
   });
+
   final int tabIndex;
   final Function(int) onChangeTab;
   final Function onTapItem;
+  final List<ReksaDana> listItem;
+  final bool isLoading;
+  final bool isError;
 
   @override
   Widget build(BuildContext context) {
@@ -101,47 +109,52 @@ class DashboardTabReksaView extends StatelessWidget {
           color: Colors.black87,
           height: MediaQuery.of(context).size.height - 40 - 385,
           width: double.infinity,
-          child: ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  onTapItem();
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xFF1b262c),
-                      borderRadius: BorderRadius.circular(5.0)),
-                  margin:
-                      EdgeInsetsDirectional.only(bottom: 15, start: 5, end: 5),
-                  child: ListTile(
-                    leading: Container(
-                        child: Icon(
-                      Icons.trending_up,
-                      color: Color(0xFF66ff00),
-                    )),
-                    title: Text(
-                      'Capital Money Market Fund',
-                      style: TextStyle(
-                          color: Color(0xFFbbe1fa),
-                          fontWeight: FontWeight.bold),
+          child: (isLoading)
+              ? loadingDataWidget
+              : (isError)
+                  ? errorWidget
+                  : ListView.builder(
+                      itemCount: listItem.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            onTapItem();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xFF1b262c),
+                                borderRadius: BorderRadius.circular(5.0)),
+                            margin: EdgeInsetsDirectional.only(
+                                bottom: 15, start: 5, end: 5),
+                            child: ListTile(
+                              leading: Container(
+                                  child: Icon(
+                                Icons.trending_up,
+                                color: Color(0xFF66ff00),
+                              )),
+                              title: Text(
+                                listItem[index].titleReksa,
+                                style: TextStyle(
+                                    color: Color(0xFFbbe1fa),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                listItem[index].tahunSatu,
+                                style: TextStyle(
+                                  color: Color(0xFFbbe1fa),
+                                ),
+                              ),
+                              trailing: Text(
+                                'Nab ${listItem[index].hargaUnit}',
+                                style: TextStyle(
+                                    color: Color(0xFFbbe1fa),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                    subtitle: Text(
-                      '7.44%',
-                      style: TextStyle(
-                        color: Color(0xFFbbe1fa),
-                      ),
-                    ),
-                    trailing: Text(
-                      'Nab IDR 1,310.07',
-                      style: TextStyle(
-                          color: Color(0xFFbbe1fa),
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
         ),
       ],
     );

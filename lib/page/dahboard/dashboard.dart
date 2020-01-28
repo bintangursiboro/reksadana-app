@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/page/checkout/checkout.dart';
 import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_bloc.dart';
+import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_event.dart';
 import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_state.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard_view.dart';
 import 'package:hoopiper_reksa/page/detail_beli/detail.dart';
@@ -21,6 +23,7 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     _bloc = BlocProvider.of<DashboardBloc>(context);
+    _bloc.add(GetProfile());
   }
 
   @override
@@ -34,6 +37,9 @@ class _DashboardState extends State<Dashboard> {
             onTapCheckout: onTapCheckout,
             onTapReksa: onTapReksa,
             onTapLogout: onTapLogout,
+            profile: (state is DashboardProfileLoaded)
+                ? state.profile
+                : Profile.loading(),
           );
         },
       ),
