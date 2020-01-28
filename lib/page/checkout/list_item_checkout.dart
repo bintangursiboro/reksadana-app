@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class ListItemCheckout extends StatelessWidget {
+  final ItemBeli item;
+
+  ListItemCheckout({this.item});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,16 +16,16 @@ class ListItemCheckout extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: ListTile(
         title: Text(
-          'Reksadana',
+          item.titleReksa,
           style: primaryColorBold(),
         ),
         subtitle: Text(
-          'Total Beli: Rp. 500.000',
+          'Total Beli: Rp. ${item.jlhBeli}',
           style: primaryColor(),
         ),
         trailing: Text(
-          '7.87 % / Thn',
-          style: primaryColor(  ),
+          item.hargaUnit,
+          style: primaryColor(),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       ),

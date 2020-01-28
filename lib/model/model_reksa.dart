@@ -84,6 +84,7 @@ class ReksaDana {
     this.danaKelola = response['dana_kelola'] ?? '';
     this.hargaUnit = response['harga_unit'] ?? '';
     this.isGrowth = response['isGrowth'] ?? false;
+    this.tglPeluncuran = response['tgl_peluncuran'] ?? '';
     this.riwayatKeuntungan =
         RiwayatKeuntunganModel.fromJson(response['riwayat_keuntungan']) ??
             RiwayatKeuntunganModel.initial();
@@ -130,5 +131,28 @@ class Profile {
   Profile.loading() {
     this.name = 'Loading..';
     this.totalDana = 'Loading..';
+  }
+}
+
+class ItemBeli {
+  String titleReksa;
+  String hargaUnit;
+  String jenis;
+  int jlhBeli;
+
+  ItemBeli.fromJson(Map<String, dynamic> response) {
+    this.jlhBeli = response['jumlahBeli'] ?? 0;
+    this.titleReksa = response['titleReksa'] ?? '';
+    this.hargaUnit = response['hargaUnit'] ?? '';
+    this.jenis = response['jenis'] ?? '';
+  }
+
+  static List<ItemBeli> parseList(List<dynamic> response) {
+    List<ItemBeli> list = [];
+
+    response.forEach((item) {
+      list.add(ItemBeli.fromJson(item));
+    });
+    return list;
   }
 }

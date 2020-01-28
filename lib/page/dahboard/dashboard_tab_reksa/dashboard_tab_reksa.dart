@@ -43,7 +43,10 @@ class _DashboardTabReksaState extends State<DashboardTabReksa> {
   }
 
   onTapItem() {
-    Navigator.pushNamed(context, Detail.PATH);
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => Detail(
+              idReksa: 1,
+            )));
   }
 
   onChangeTabIndex(int index) {

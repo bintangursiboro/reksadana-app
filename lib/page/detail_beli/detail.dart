@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hoopiper_reksa/model/model_reksa.dart';
+import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_bloc.dart';
+import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_event.dart';
 import 'package:hoopiper_reksa/page/detail_beli/bloc/detail_beli_bloc.dart';
 import 'package:hoopiper_reksa/page/detail_beli/bloc/detail_beli_event.dart';
 import 'package:hoopiper_reksa/page/detail_beli/bloc/detail_beli_state.dart';
@@ -23,11 +25,15 @@ class Detail extends StatefulWidget {
 class _DetailState extends State<Detail> {
   final jumlahBeliKey = GlobalKey<FormState>();
   DetailBeliBloc _bloc;
+  TextEditingController jlhBeliController = TextEditingController();
+  DashboardBloc _dashboardBloc;
+  ReksaDana reksaDana;
 
   @override
   void initState() {
     _bloc = DetailBeliBloc();
     _bloc.add(GetDetailReksa(id: widget.idReksa));
+    _dashboardBloc = BlocProvider.of<DashboardBloc>(context);
     super.initState();
   }
 
@@ -38,6 +44,9 @@ class _DetailState extends State<Detail> {
       child: BlocBuilder(
         bloc: _bloc,
         builder: (BuildContext context, DetailBeliState state) {
+          if (state is DetailBeliLoaded) {
+            reksaDana = state.reksaDana;
+          }
           return Scaffold(
             body: SafeArea(
               child: SingleChildScrollView(
@@ -88,6 +97,7 @@ class _DetailState extends State<Detail> {
                         child: Form(
                           key: jumlahBeliKey,
                           child: TextFormField(
+                            controller: jlhBeliController,
                             // inputFormatters: ,
                             style: primaryColor(),
                             keyboardType: TextInputType.number,
@@ -132,9 +142,7 @@ class _DetailState extends State<Detail> {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           onPressed: () {
-                            if (jumlahBeliKey.currentState.validate()) {
-                              print('BELIKK!');
-                            }
+                            onTapBeli(jlhBeliController.text, reksaDana);
                           },
                         ),
                       ),
@@ -146,7 +154,19 @@ class _DetailState extends State<Detail> {
           );
         },
       ),
-      listener: (BuildContext context, DetailBeliState state) {},
+      listener: (BuildContext context, DetailBeliState state) {
+        if (state is BeliSuccess) {
+          _dashboardBloc.add(CheckCart());
+          Navigator.of(context).pop();
+        }
+      },
     );
+  }
+
+  onTapBeli(String jumlahBeli, ReksaDana reksaDana) {
+    if (jumlahBeliKey.currentState.validate()) {
+      _bloc.add(
+          BeliReksaDana(jlhBeli: int.parse(jumlahBeli), reksaDana: reksaDana));
+    }
   }
 }

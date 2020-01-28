@@ -13,3 +13,5 @@ class GetProfile extends DashboardEvent {}
 class CheckLogin extends DashboardEvent {}
 
 class SetLogout extends DashboardEvent {}
+
+class CheckCart extends DashboardEvent {}

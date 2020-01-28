@@ -19,3 +19,9 @@ class DetailBeliLoaded extends DetailBeliState {
 class DetailBeliError extends DetailBeliState {}
 
 class DetailBeliInitial extends DetailBeliState {}
+
+class BeliSuccess extends DetailBeliState {}
+
+class BeliLoading extends DetailBeliState {}
+
+class BeliError extends DetailBeliState {}

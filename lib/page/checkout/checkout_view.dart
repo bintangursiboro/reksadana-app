@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 import 'package:hoopiper_reksa/page/checkout/list_item_checkout.dart';
 import 'package:hoopiper_reksa/util/style/style.dart';
 
 class CheckoutView extends StatelessWidget {
+  final List<ItemBeli> listItem;
+  final int totalBeli;
+
+  CheckoutView({
+    this.listItem,
+    this.totalBeli,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,8 +22,11 @@ class CheckoutView extends StatelessWidget {
           Container(
             height: 500,
             child: ListView.builder(
+              itemCount: listItem.length,
               itemBuilder: (BuildContext context, int index) {
-                return ListItemCheckout();
+                return ListItemCheckout(
+                  item: listItem[index],
+                );
               },
             ),
           ),

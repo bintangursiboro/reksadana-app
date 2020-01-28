@@ -39,7 +39,8 @@ class DatabaseHelper {
       columnId INTEGER PRIMARY KEY AUTOINCREMENT,
       titleReksa TEXT,
       jenis TEXT,
-      hargaUnit TEXT
+      hargaUnit TEXT,
+      jumlahBeli INTEGER
     )
       ''');
 
@@ -47,7 +48,8 @@ class DatabaseHelper {
       columnId INTEGER PRIMARY KEY AUTOINCREMENT,
       titleReksa TEXT,
       jenis TEXT,
-      hargaUnit TEXT
+      hargaUnit TEXT,
+      jumlahBeli INTEGER
     )
       ''');
 
