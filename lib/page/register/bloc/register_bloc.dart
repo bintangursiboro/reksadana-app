@@ -14,8 +14,5 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     if (event is RegisterUser) {
       await _service.registerUser(event.model);
     }
-    if (event is FetchUser) {
-      await _service.fetchUser();
-    }
   }
 }

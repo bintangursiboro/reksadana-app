@@ -14,3 +14,7 @@ class LoginUser extends LoginEvent {
 
   LoginUser({this.password, this.username}) : super([username, password]);
 }
+
+class CheckLogin extends LoginEvent {}
+
+class SetLogin extends LoginEvent {}

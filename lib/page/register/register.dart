@@ -31,22 +31,32 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocListener(
       bloc: _bloc,
-      builder: (BuildContext context, RegisterState state) {
-        return Scaffold(
-          body: RegisterView(
-            onTapExit: onTapExit,
-            namaDepan: namaDepan,
-            namaBelakang: namaBelakang,
-            email: email,
-            userNameController: userNameController,
-            passwordController: passwordController,
-            verifyController: verifyController,
-            registerKey: registerKey,
-            onTapRegister: onTapRegister,
-          ),
-        );
+      child: BlocBuilder(
+        bloc: _bloc,
+        builder: (BuildContext context, RegisterState state) {
+          return Scaffold(
+            body: RegisterView(
+              onTapExit: onTapExit,
+              namaDepan: namaDepan,
+              namaBelakang: namaBelakang,
+              email: email,
+              userNameController: userNameController,
+              passwordController: passwordController,
+              verifyController: verifyController,
+              registerKey: registerKey,
+              onTapRegister: onTapRegister,
+              isLoading: (state is RegisterLoading),
+              isError: (state is RegisterError),
+            ),
+          );
+        },
+      ),
+      listener: (BuildContext context, RegisterState state) {
+        if (state is RegisterSuccess) {
+          Navigator.pop(context);
+        }
       },
     );
   }

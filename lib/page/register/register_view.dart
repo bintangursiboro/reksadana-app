@@ -12,6 +12,8 @@ class RegisterView extends StatelessWidget {
   final TextEditingController verifyController;
   final GlobalKey<FormState> registerKey;
   final Function(String, String, String, String, String, String) onTapRegister;
+  final bool isLoading;
+  final bool isError;
 
   RegisterView({
     this.onTapExit,
@@ -23,6 +25,8 @@ class RegisterView extends StatelessWidget {
     this.passwordController,
     this.registerKey,
     this.onTapRegister,
+    this.isError,
+    this.isLoading,
   });
 
   @override
@@ -181,27 +185,30 @@ class RegisterView extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        width: double.infinity,
-                        child: RawMaterialButton(
-                          fillColor: Theme.of(context).primaryColor,
-                          shape: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5)),
-                          onPressed: () {
-                            onTapRegister(
-                                namaDepan.text,
-                                namaBelakang.text,
-                                email.text,
-                                userNameController.text,
-                                passwordController.text,
-                                verifyController.text);
-                          },
-                          child: Text(
-                            'Register',
-                            style: primaryColorBold(fontSize: 15),
-                          ),
-                        ),
-                      ),
+                      (isLoading)
+                          ? CircularProgressIndicator()
+                          : Container(
+                              width: double.infinity,
+                              child: RawMaterialButton(
+                                fillColor: Theme.of(context).primaryColor,
+                                shape: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                onPressed: () {
+                                  onTapRegister(
+                                      namaDepan.text,
+                                      namaBelakang.text,
+                                      email.text,
+                                      userNameController.text,
+                                      passwordController.text,
+                                      verifyController.text);
+                                },
+                                child: Text(
+                                  'Register',
+                                  style: primaryColorBold(fontSize: 15),
+                                ),
+                              ),
+                            ),
+                      (isError) ? Text('Username telah ada') : Container(),
                     ],
                   ),
                 ),

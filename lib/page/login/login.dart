@@ -24,6 +24,7 @@ class _LoginState extends State<Login> {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
     _bloc = LoginBloc();
+    _bloc.add(CheckLogin());
     super.initState();
   }
 
@@ -47,6 +48,7 @@ class _LoginState extends State<Login> {
         ),
         listener: (BuildContext context, LoginState state) {
           if (state is LoginSuccess) {
+            _bloc.add(SetLogin());
             Navigator.of(context).pushNamed(Dashboard.PATH);
           }
         },

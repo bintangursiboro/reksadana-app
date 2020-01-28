@@ -24,6 +24,7 @@ class _DashboardState extends State<Dashboard> {
     super.initState();
     _bloc = BlocProvider.of<DashboardBloc>(context);
     _bloc.add(GetProfile());
+    _bloc.add(CheckLogin());
   }
 
   @override
@@ -43,7 +44,11 @@ class _DashboardState extends State<Dashboard> {
           );
         },
       ),
-      listener: (BuildContext context, DashboardState state) {},
+      listener: (BuildContext context, DashboardState state) {
+        if (state is HasLogout) {
+          Navigator.popAndPushNamed(context, Login.PATH);
+        }
+      },
     );
   }
 
@@ -56,6 +61,6 @@ class _DashboardState extends State<Dashboard> {
   }
 
   onTapLogout() {
-    Navigator.popAndPushNamed(context, Login.PATH);
+    _bloc.add(SetLogout());
   }
 }

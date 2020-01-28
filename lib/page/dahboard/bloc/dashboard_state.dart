@@ -21,3 +21,8 @@ class DashboardProfileLoaded extends DashboardState {
   final Profile profile;
   DashboardProfileLoaded({this.profile}) : super([profile]);
 }
+
+class HasLogout extends DashboardState {
+  final bool hasLogin;
+  HasLogout({this.hasLogin}) : super([hasLogin]);
+}
