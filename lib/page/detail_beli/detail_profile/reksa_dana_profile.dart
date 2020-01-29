@@ -17,7 +17,6 @@ class ReksaDanaProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topCenter,
-      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: colorPrimaryContainer,

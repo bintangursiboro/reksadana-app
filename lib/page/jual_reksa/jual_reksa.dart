@@ -47,108 +47,110 @@ class _JualReksaState extends State<JualReksa> {
                 ),
                 centerTitle: true,
               ),
-              body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                color: Theme.of(context).primaryColor,
-                child: Column(
-                  children: <Widget>[
-                    Text(widget.itemBeli.titleReksa,
-                        style: primaryColorBold(fontSize: 25)),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            border: BorderDirectional(
-                                end: BorderSide(color: primaryTextColor)),
+              body: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  color: Theme.of(context).primaryColor,
+                  child: Column(
+                    children: <Widget>[
+                      Text(widget.itemBeli.titleReksa,
+                          style: primaryColorBold(fontSize: 25)),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              border: BorderDirectional(
+                                  end: BorderSide(color: primaryTextColor)),
+                            ),
+                            padding: EdgeInsetsDirectional.only(end: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Jenis Reksa Dana',
+                                  style: primaryColorBold(),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Harga Unit',
+                                  style: primaryColorBold(),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Jumlah Beli',
+                                  style: primaryColorBold(),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
                           ),
-                          padding: EdgeInsetsDirectional.only(end: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Jenis Reksa Dana',
-                                style: primaryColorBold(),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Harga Unit',
-                                style: primaryColorBold(),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Jumlah Beli',
-                                style: primaryColorBold(),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
+                          Container(
+                            padding: EdgeInsetsDirectional.only(start: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  widget.itemBeli.jenis ?? '',
+                                  style: primaryColor(),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  widget.itemBeli.hargaUnit ?? '',
+                                  style: primaryColor(),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Rp. ${widget.itemBeli.jlhBeli}' ?? '',
+                                  style: primaryColor(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: EdgeInsetsDirectional.only(start: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                widget.itemBeli.jenis ?? '',
-                                style: primaryColor(),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                widget.itemBeli.hargaUnit ?? '',
-                                style: primaryColor(),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Rp. ${widget.itemBeli.jlhBeli}' ?? '',
-                                style: primaryColor(),
-                              ),
-                            ],
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        child: RawMaterialButton(
+                          onPressed: () {
+                            jualReksaDana(widget.itemBeli.columnId);
+                          },
+                          child: Text(
+                            'Jual',
+                            style: textStyleBlackBold(fontSize: 15),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      child: RawMaterialButton(
-                        onPressed: () {
-                          jualReksaDana(widget.itemBeli.columnId);
-                        },
-                        child: Text(
-                          'Jual',
-                          style: textStyleBlackBold(fontSize: 15),
-                        ),
-                        fillColor: primaryTextColor,
-                        shape: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                          fillColor: primaryTextColor,
+                          shape: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

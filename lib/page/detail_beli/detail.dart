@@ -49,11 +49,10 @@ class _DetailState extends State<Detail> {
           }
           return Scaffold(
             body: SafeArea(
-              child: SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  color: Colors.black87,
+              child: Container(
+                height: double.infinity,
+                color: Theme.of(context).primaryColor,
+                child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
                       ReksaDanaProfile(
