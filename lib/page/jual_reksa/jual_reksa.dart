@@ -47,10 +47,11 @@ class _JualReksaState extends State<JualReksa> {
                 ),
                 centerTitle: true,
               ),
-              body: SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  color: Theme.of(context).primaryColor,
+              body: Container(
+                color: Theme.of(context).primaryColor,
+                height: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
                       Text(widget.itemBeli.titleReksa,

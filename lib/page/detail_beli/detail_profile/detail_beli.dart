@@ -17,8 +17,8 @@ class DetailBeli extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: Wrap(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
             decoration: BoxDecoration(

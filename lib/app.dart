@@ -27,7 +27,7 @@ class App extends StatelessWidget {
           JualReksa.PATH: (_) => JualReksa(),
         },
         // home: Dashboard(),
-        initialRoute: Dashboard.PATH,
+        initialRoute: Login.PATH,
         theme: ThemeData(
           primaryColor: Color(0xFF1b262c),
           accentColor: Color(0xFF0f4c75),

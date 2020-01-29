@@ -51,6 +51,9 @@ class _LoginState extends State<Login> {
             _bloc.add(SetLogin());
             Navigator.of(context).pushNamed(Dashboard.PATH);
           }
+          if (state is HasLogin) {
+            Navigator.of(context).pushNamed(Dashboard.PATH);
+          }
         },
       ),
     );

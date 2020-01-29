@@ -52,6 +52,7 @@ class _DetailState extends State<Detail> {
               child: Container(
                 height: double.infinity,
                 color: Theme.of(context).primaryColor,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
