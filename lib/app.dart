@@ -4,8 +4,10 @@ import 'package:hoopiper_reksa/page/checkout/checkout.dart';
 import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_bloc.dart';
 import 'package:hoopiper_reksa/page/dahboard/dashboard.dart';
 import 'package:hoopiper_reksa/page/detail_beli/detail.dart';
+import 'package:hoopiper_reksa/page/jual_reksa/jual_reksa.dart';
 import 'package:hoopiper_reksa/page/login/login.dart';
 import 'package:hoopiper_reksa/page/register/register.dart';
+import 'package:hoopiper_reksa/page/reksa_dana_ku/bloc/reksa_dana_ku_bloc.dart';
 import 'package:hoopiper_reksa/page/reksa_dana_ku/reksa_dana_ku.dart';
 
 class App extends StatelessWidget {
@@ -22,6 +24,7 @@ class App extends StatelessWidget {
           Login.PATH: (_) => Login(),
           Register.PATH: (_) => Register(),
           ReksaDanaKu.PATH: (_) => ReksaDanaKu(),
+          JualReksa.PATH: (_) => JualReksa(),
         },
         // home: Dashboard(),
         initialRoute: Dashboard.PATH,
@@ -34,7 +37,10 @@ class App extends StatelessWidget {
         BlocProvider<DashboardBloc>(
           create: (context) => DashboardBloc(),
           // child: Dashboard(),
-        )
+        ),
+        BlocProvider<ReksaDanaKuBloc>(
+          create: (context) => ReksaDanaKuBloc(),
+        ),
       ],
     );
   }

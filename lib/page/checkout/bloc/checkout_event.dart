@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:hoopiper_reksa/model/model_reksa.dart';
 
 abstract class CheckoutEvent extends Equatable {
   final List mProps;
@@ -9,3 +10,10 @@ abstract class CheckoutEvent extends Equatable {
 }
 
 class GetCheckoutList extends CheckoutEvent {}
+
+class CheckoutNow extends CheckoutEvent {
+  final List<ItemBeli> list;
+  CheckoutNow({this.list}) : super([list]);
+}
+
+class DeleteCheckout extends CheckoutEvent {}

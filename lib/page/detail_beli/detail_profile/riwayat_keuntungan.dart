@@ -39,7 +39,7 @@ class RiwayatKeuntungan extends StatelessWidget {
                   height: 15,
                 ),
                 (isLoading)
-                    ? loadingDataWidget
+                    ? CircularProgressIndicator()
                     : Text(
                         reksaDana.riwayatKeuntungan.blnEnam ?? '',
                         style: textStyleBlackBold(fontSize: 15),
@@ -66,7 +66,7 @@ class RiwayatKeuntungan extends StatelessWidget {
                   height: 15,
                 ),
                 (isLoading)
-                    ? loadingDataWidget
+                    ? CircularProgressIndicator()
                     : Text(
                         reksaDana.riwayatKeuntungan.tahunSatu ?? '',
                         style: textStyleBlackBold(fontSize: 15),
@@ -93,7 +93,7 @@ class RiwayatKeuntungan extends StatelessWidget {
                   height: 15,
                 ),
                 (isLoading)
-                    ? loadingDataWidget
+                    ? CircularProgressIndicator()
                     : Text(
                         reksaDana.riwayatKeuntungan.tahunDua ?? '',
                         style: textStyleBlackBold(fontSize: 15),
@@ -119,10 +119,12 @@ class RiwayatKeuntungan extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Text(
-                  reksaDana.riwayatKeuntungan.tahunTiga ?? '',
-                  style: textStyleBlackBold(fontSize: 15),
-                ),
+                (isLoading)
+                    ? CircularProgressIndicator()
+                    : Text(
+                        reksaDana.riwayatKeuntungan.tahunTiga ?? '',
+                        style: textStyleBlackBold(fontSize: 15),
+                      ),
               ],
             ),
           ),

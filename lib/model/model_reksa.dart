@@ -139,12 +139,14 @@ class ItemBeli {
   String hargaUnit;
   String jenis;
   int jlhBeli;
+  int columnId;
 
   ItemBeli.fromJson(Map<String, dynamic> response) {
     this.jlhBeli = response['jumlahBeli'] ?? 0;
     this.titleReksa = response['titleReksa'] ?? '';
     this.hargaUnit = response['hargaUnit'] ?? '';
     this.jenis = response['jenis'] ?? '';
+    this.columnId = response['columnId'] ?? -1;
   }
 
   static List<ItemBeli> parseList(List<dynamic> response) {

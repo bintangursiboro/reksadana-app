@@ -9,11 +9,13 @@ class DashboardView extends StatelessWidget {
   final Function onTapCheckout;
   final Function onTapLogout;
   final Profile profile;
+  final bool isCart;
 
   DashboardView({
     this.onTapCheckout,
     this.onTapReksa,
     this.onTapLogout,
+    this.isCart,
     this.profile,
   });
   final Function onTapReksa;
@@ -59,19 +61,21 @@ class DashboardView extends StatelessWidget {
                             top: 10,
                             right: 10,
                           ),
-                          Positioned(
-                            child: Container(
-                              height: 10,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.red,
-                              ),
-                            ),
-                            // height: 10,
-                            top: 17,
-                            right: 17,
-                          ),
+                          (!isCart)
+                              ? Container()
+                              : Positioned(
+                                  child: Container(
+                                    height: 10,
+                                    width: 10,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  // height: 10,
+                                  top: 17,
+                                  right: 17,
+                                ),
                         ],
                       ),
                     ),

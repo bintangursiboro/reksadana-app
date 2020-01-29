@@ -156,7 +156,7 @@ class _DetailState extends State<Detail> {
       ),
       listener: (BuildContext context, DetailBeliState state) {
         if (state is BeliSuccess) {
-          _dashboardBloc.add(CheckCart());
+          _dashboardBloc.add(GetProfile());
           Navigator.of(context).pop();
         }
       },

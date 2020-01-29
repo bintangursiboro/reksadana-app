@@ -6,10 +6,12 @@ import 'package:hoopiper_reksa/util/style/style.dart';
 class CheckoutView extends StatelessWidget {
   final List<ItemBeli> listItem;
   final int totalBeli;
+  final Function(List<ItemBeli>) onTapCheckout;
 
   CheckoutView({
     this.listItem,
     this.totalBeli,
+    this.onTapCheckout,
   });
 
   @override
@@ -36,14 +38,16 @@ class CheckoutView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  'Total: RP. 100.000.000',
+                  'Total: RP. $totalBeli',
                   style: primaryColorBold(),
                 ),
                 Container(
                   width: double.infinity,
                   child: RawMaterialButton(
                     fillColor: primaryTextColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      onTapCheckout(listItem);
+                    },
                     child: Text(
                       'Checkout Pembayaran',
                       style: textStyleBlackBold(fontSize: 15),

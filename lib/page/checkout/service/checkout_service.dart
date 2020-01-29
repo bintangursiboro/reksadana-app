@@ -13,4 +13,22 @@ class CheckoutService {
       return ItemBeli.parseList(onValue);
     });
   }
+
+  Future<int> checkoutAllItem(List<ItemBeli> list) async {
+    Database db = await _databaseHelper.database;
+    list.forEach((item) {
+      db.insert(DatabaseHelper.tableMyReksadana, {
+        'titleReksa': item.titleReksa,
+        'jenis': item.jenis,
+        'hargaUnit': item.hargaUnit,
+        'jumlahBeli': item.jlhBeli,
+      });
+    });
+    return await db.delete(DatabaseHelper.tableCheckout);
+  }
+
+  Future<int> deleteCheckout() async {
+    Database db = await _databaseHelper.database;
+    return await db.delete(DatabaseHelper.tableCheckout);
+  }
 }

@@ -24,5 +24,10 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
         yield CheckoutError();
       }
     }
+    if (event is CheckoutNow) {
+      yield await _service.checkoutAllItem(event.list).then((onValue) {
+        return CheckoutSuccess();
+      });
+    }
   }
 }

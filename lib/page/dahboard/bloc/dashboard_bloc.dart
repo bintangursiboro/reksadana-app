@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_event.dart';
 import 'package:hoopiper_reksa/page/dahboard/bloc/dashboard_state.dart';
+import 'package:hoopiper_reksa/page/dahboard/service/dashboard_db_service.dart';
 import 'package:hoopiper_reksa/page/dahboard/service/dashboard_service.dart';
 import 'package:hoopiper_reksa/util/shared_preferences/shared_preferences_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,6 +11,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardState get initialState => DashboardInitial();
 
   DashboardService _service = DashboardService();
+  DashboardDbService _dbService = DashboardDbService();
 
   @override
   Stream<DashboardState> mapEventToState(DashboardEvent event) async* {
@@ -18,8 +20,11 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     if (event is GetProfile) {
       yield DashboardLoading();
       try {
-        yield await _service.getProfile().then((response) {
+        var currentState = await _service.getProfile().then((response) {
           return DashboardProfileLoaded(profile: response);
+        });
+        yield await _dbService.checkCart().then((onValue) {
+          return currentState.copyWith(isAnyCheckout: onValue);
         });
       } catch (_) {}
     }

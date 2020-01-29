@@ -19,7 +19,15 @@ class DashboardLoading extends DashboardState {}
 
 class DashboardProfileLoaded extends DashboardState {
   final Profile profile;
-  DashboardProfileLoaded({this.profile}) : super([profile]);
+  final bool isAnyCheckout;
+  DashboardProfileLoaded({this.profile, this.isAnyCheckout})
+      : super([profile, isAnyCheckout]);
+
+  DashboardProfileLoaded copyWith({Profile profile, bool isAnyCheckout}) {
+    return DashboardProfileLoaded(
+        profile: profile ?? this.profile,
+        isAnyCheckout: isAnyCheckout ?? false);
+  }
 }
 
 class HasLogout extends DashboardState {

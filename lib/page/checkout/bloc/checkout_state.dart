@@ -21,3 +21,5 @@ class CheckoutLoaded extends CheckoutState {
 class CheckoutError extends CheckoutState {}
 
 class CheckoutInitial extends CheckoutState {}
+
+class CheckoutSuccess extends CheckoutState {}

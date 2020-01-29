@@ -41,6 +41,8 @@ class _DashboardState extends State<Dashboard> {
             profile: (state is DashboardProfileLoaded)
                 ? state.profile
                 : Profile.loading(),
+            isCart:
+                (state is DashboardProfileLoaded) ? state.isAnyCheckout : false,
           );
         },
       ),
